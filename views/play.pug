@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title BunDle Word Game
+        link(rel="stylesheet", href="style.css") 
+    body 
+        img(src="bunDleBun.png", alt="image of a sesame bun")
+        h1 BunDle Word Game
+        #computer-word 
+            label(for="computerword")
+            h4 Computer Generated Word: 
+            h4 #{computerWord} 
+        #score-section
+            p Score: #{user-score}
+            
+            p Possible Points: #{possible-points}
+            
+        form(action = '/submitUsersWord', method = 'POST')
+            div  
+                label(for = "userWord") Enter your Guess:       
+                input(type= "text" name = "userword" id="userword" value="Enter a word") 
+                br
+                br
+                #buttons 
+                    button(type="submit") Submit Guess
+        a(href= "/lose")
+        button Quit?
+         //- script(src="myGameScript.js") 
+        //- submit button may need function too - getData() to pass in to compare

@@ -1,0 +1,14 @@
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+h1, h2, h4 {
+    text-align: center;
+    /* color: darkgrey; */
+}
+div {
+    text-align: center;
+}
