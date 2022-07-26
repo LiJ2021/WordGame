@@ -28,18 +28,19 @@ app.get("/", (req, res) => {
 })
 
 app.get("/play", (req,res)=> {
-    res.render('play')
+    res.render('play',)
 })
 
 //I want the correct word that the user submitted to display on the play page
-app.post("/play", (req, res) =>{
-    const form = req.body
-    console.log(req.body)
-    res.render('play', {
-        computerWord: computerWord,
-        userword: form.userword
-    })
-})
+// app.post("/play", (req, res) =>{
+//     // const form = req.body
+//     // console.log(req.body) 
+//     // res.render('play', {
+//     //     computerWord: computerWord,
+//     //     userword: form.userword })
+//         res.render('play')
+    
+// })
 
 app.get("/win", (req, res) => {
     // let userPoints = {}

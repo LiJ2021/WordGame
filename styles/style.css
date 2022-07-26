@@ -5,10 +5,16 @@ img{
     width: 20%;
 }
 
-h1, h2, h4 {
+h1, h2, h3, h4 {
     text-align: center;
     /* color: darkgrey; */
 }
 div {
     text-align: center;
+}
+#score-section {
+    width: 200px;
+    border: 7px solid black;
+    border-radius: 7px;;
+    margin: auto;
 }

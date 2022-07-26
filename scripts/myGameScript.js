@@ -44,48 +44,74 @@ function getComputerWordArray() {
    
 //-----------------------------user stuff ----------------------------
 
-points = 0;
+let points = 0;
 let playersGuess = [];
+let pointsPossible = getComputerWordArray().length;
+console.log ("possible points: ", pointsPossible)
+console.log("points: ", points)
+
+
+document.getElementById('showpointspossible').innerHTML = pointsPossible
 
 //retrieve the word the player entered from the webpage
-
-
 //compare the players word to the words in the array based on computer word
 //if the playersWord equals a word in the array, points go up by one
 function playersWords(){
     let randomWordArray = getComputerWordArray()
     // console.log(randomWordArray)
+    // console.log(pointsPossible)
     //retrieve players word from pug page
-     playersWord = document.getElementById("userword").value
+     let result = document.getElementById("userword").value
+     //need to error check for if they put in capital letters
+     let playersWord = result.toLowerCase()
+        
      console.log(playersWord)
-    let pointsPossible = randomWordArray.length
+    //  console.log ("possible points: ", pointsPossible)
+    //how to make sure that player can only match  and add the word once?
         if((randomWordArray.includes(playersWord)) && (!playersGuess.includes(playersWord))){
-        //how to make sure that player can only match  and add the word once?
         console.log ("matched word: ", playersWord)
-        
-        points += 1       
+
+        //keep track of points
+        points += 1    
+        console.log("points: ", points)   
+        //update pug page to display current score
+        //dont want it to append - how to update score?
+        document.getElementById("showpoints").innerHTML = points
+
         //capture users guesses - probably need to push to an array
-        
         playersGuess.push(playersWord)
         //how to append words on the webpage so that they stay for the duration of the game?
         //make a tag on the play pug page
         //push the correct guesses into the array
-        //can I display the array
-
-        //how to make sure that player cant use computer word - i mean its not in the array, but do I want an error message 
+        //display the array
+        
         let guessElement = document.createElement("p")
         guessElement.innerHTML = playersWord
         document.getElementById("playersGuess").appendChild(guessElement)
         
          return 
-    } else{
+    } 
+    //if players points === possible points --->send to you won page
+    //you won page should show 
+    if (points === pointsPossible) {
+        
+    }
+    //how to make sure  player cant use computer word - its not in the array, but do I want an error message 
+    //if array includes players word and players guess includes players word, alert ("Already guessed!")
+    if((playersGuess.includes(playersWord))){
+        alert ("You already found this word.  Try Again!")
+    }
+    if (playersWord === computerWord){
+        alert ("Can't use computers word. Try again!")
+    }
+    else{
         alert ("Not a match! Try again")
        }
    
  } 
 
 
-
+//_______________________________________________________________
 
 //possible points are determined by array length
 //points board should read `${points}` out of `${pointsPossible}` "possible"

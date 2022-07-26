@@ -9,15 +9,17 @@ html(lang="en")
     body 
         img(src="bunDleBun.png", alt="image of a sesame bun")
         h1 BunDle Word Game
-        //-do I need a form for computer word? method post? I dont think so - no submit
+        h3 How many words that are 4 letters or more can you make? 
+        #score-section
+            p Possible Points:
+            #showpointspossible 
+            p Your Score:
+            #showpoints 
         #computer-word 
             label(for="computerword")
-            h4 Computer Generated Word: 
-            h4#computerWord
-        #score-section
-            p Score: #{user-score}
-            p Possible Points: #{possible-points}
-        div  
+            h2 Computer Generated Word: 
+            h3#computerWord
+        div 
             label(for = "userword") Enter your Guess:       
             input(type= "text" name = "userword" id="userword" placeholder="Enter a word") 
             br

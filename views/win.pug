@@ -9,9 +9,14 @@ html(lang="en")
     body 
         img(src="bunDleBunGold.png", alt="image of a gold-covered bun")
         h1 BunDle Word Game
-        p Final Score: #{user-points} out of #{possible-points}
     p Congratulations!! You Win!!
+    #score-section
+            p Possible Points:
+            #showpointspossible 
+            p Your Score:
+            #showpoints  
     p Thanks for playing!!
     div 
         a(href="/") 
             button Play Again?
+    script(src="myGameScript.js")

@@ -11,9 +11,13 @@ html(lang="en")
         h1 BunDle Word Game
         br
         h2 You got burned!!!
-    div
-        p Final Score: #{user-points} out of #{possible-points}
+    #score-section
+            p Possible Points:
+            #showpointspossible 
+            p Your Score:
+            #showpoints  
         p Thanks for playing!! 
     div 
         a(href="/")
          button Try Again?
+    script(src="myGameScript.js")
