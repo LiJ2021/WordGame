@@ -10,4 +10,4 @@ let computerWord = randomWord1[Math.floor(Math.random() * randomWord1.length)]
 }
 
 //do I need to call the function?
-//computersWord(computerWord)
+computersWord(computerWord)

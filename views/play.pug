@@ -9,24 +9,27 @@ html(lang="en")
     body 
         img(src="bunDleBun.png", alt="image of a sesame bun")
         h1 BunDle Word Game
+        //-do I need a form for computer word? method post? I dont think so - no submit
         #computer-word 
             label(for="computerword")
             h4 Computer Generated Word: 
-            h4 #{computerWord} 
+            h4#computerWord
         #score-section
             p Score: #{user-score}
-            
             p Possible Points: #{possible-points}
-            
-        form(action = '/submitUsersWord', method = 'POST')
-            div  
-                label(for = "userWord") Enter your Guess:       
-                input(type= "text" name = "userword" id="userword" value="Enter a word") 
-                br
-                br
-                #buttons 
-                    button(type="submit") Submit Guess
-        a(href= "/lose")
-        button Quit?
-         //- script(src="myGameScript.js") 
-        //- submit button may need function too - getData() to pass in to compare
+        div  
+            label(for = "userword") Enter your Guess:       
+            input(type= "text" name = "userword" id="userword" placeholder="Enter a word") 
+            br
+            br
+            #buttons 
+                button(type="submit" onclick = "playersWords()") Submit Guess
+        div
+            h4 Words Found: 
+            #playersGuess 
+            //- how do I append multiple userwords here so that they all show and stay until the user quits or resets? 
+            //- probably have to create another array and push the correct answers into it
+        div
+            a(href= "/lose")
+                button Quit?
+        script(src="myGameScript.js")

@@ -1,7 +1,6 @@
 const express = require('express')
 //instantiation of the express server 
 const bodyParser = require ('body-parser')
-
 const app = express()
 
 //sets the path to the views folder
@@ -18,11 +17,9 @@ app.use(express.static('images'))
 app.use(express.static('styles'))
 app.use(express.static('scripts'))
 
-let randomWordArray =['caph', 'chap', 'chat', 'hath', 'haut', 'pact', 'path', 'phat', 'phut', 'putz', 'tach', 'caput', 'chapt', 'hatch', 'hutch', 'patch', 'hutzpa', 'chutzpa', 'hutzpah']
-
-
 app.use("/", (req, res, next) => {
     console.log("Accessing Server")
+    //area for possible login to game for future use with a database if we want to keep score and player info
     next()
 })
 app.get("/", (req, res) => {
@@ -30,29 +27,18 @@ app.get("/", (req, res) => {
     res.render('index')
 })
 
-// app.use("/play/:userword", (req, res, next) =>{
-//     let userword = req.params.userword
-//     console.log(userword)
-//     //loop trhough the array to see if the word matches
-//     randomWordArray.forEach(word => {
-//     if (word === userword){
-//         console.log(userword + " is a word!! ")
-//         next()
-//     }
-//   })
-// })
-
-// app.get("/play/:userword", (req, res) =>{
-//     res.send("YOU found a match!!! YOU succesfully traversed the array and made it here!")
-//    // res.send(`${userword}` + " is a word!! ")
-// })
-
 app.get("/play", (req,res)=> {
-res.render('play')
+    res.render('play')
 })
 
-app.post("/submitUsersWord", (req, res) =>{
+//I want the correct word that the user submitted to display on the play page
+app.post("/play", (req, res) =>{
+    const form = req.body
     console.log(req.body)
+    res.render('play', {
+        computerWord: computerWord,
+        userword: form.userword
+    })
 })
 
 app.get("/win", (req, res) => {
@@ -65,6 +51,11 @@ app.get("/lose", (req, res) => {
     // let userPoints = {}
     // let pointsPossible = {}
     //render can display the information contained in the get to the webpage/file associated with the name if programmed to do so-
+    res.render('lose')
+})
+app.post("/losingstats", (req, res) => {
+
+    //need to retrieve score info from play somehow - does that need to be a form as well
     res.render('lose')
 })
 
