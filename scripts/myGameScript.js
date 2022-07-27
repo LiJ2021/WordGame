@@ -1,12 +1,12 @@
 // //-----------computer stuff -----------------------------
 // //list possible words computer will use
-randomWord1 = ['chutzpah', 'addition', 'blithely', 'exciting', 'beautiful', 'actually', 'therefor', 'enacting']
+randomWord1 = ['chutzpah', 'addition', 'blithely', 'exciting', 'beautiful', 'actually', 'therefor', 'enacting', 'sole']
 
 // //randomly choose word computer will use
 // //(future: use npm random word generator - https://www.npmjs.com/package/random-words){
 let computerWord = randomWord1[Math.floor(Math.random() * randomWord1.length)] 
 
-//display computerWord on in pug page 
+//display computerWord on pug page 
 document.getElementById("computerWord").innerHTML = computerWord
 
 //corresponding randomWordArray based on computerWord
@@ -35,8 +35,10 @@ function getComputerWordArray() {
            }
        if (computerWord === 'enacting'){ 
            randomWordArray =['acne',   'agin',   'aine',   'ante',   'anti',   'cage',   'cain',   'cane',   'cant',   'cate',   'cent',   'cine',   'cite',   'etic',   'etna',   'gaen',   'gain',   'gait',   'gane',   'gate',   'gent',   'geta',   'gien',   'gite',   'gnat',   'neat',   'nice',   'nine',   'nite',   'tace',   'tain',   'tang',   'tine',   'ting',  'acing',   'actin',   'agent',   'anent',   'antic',   'enact',   'eniac',   'entia',   'genic',   'giant',   'inane',   'nance',   'tenia',   'tinea',   'tinge', 'acetin',   'acting',   'anting',   'canine',   'caning',   'cannie',   'centai',   'eating',   'enatic',   'encina',   'gannet',   'incage',   'incant',   'incent',   'ingate',   'innage',   'innate',   'tannic', 'ancient',   'anteing',   'antigen',   'canting',   'gentian',  ]
-           }
-      
+       }
+        if (computerWord === 'sole'){
+            randomWordArray = ['lose', 'oles', 'sloe' ]
+        }
     //   console.log(randomWordArray)
       return randomWordArray
 
@@ -60,6 +62,7 @@ function playersWords(){
     let randomWordArray = getComputerWordArray()
     // console.log(randomWordArray)
     // console.log(pointsPossible)
+
     //retrieve players word from pug page
      let result = document.getElementById("userword").value
      //need to error check for if they put in capital letters
@@ -67,8 +70,15 @@ function playersWords(){
         
      console.log(playersWord)
     //  console.log ("possible points: ", pointsPossible)
+
+    if((playersGuess.includes(playersWord))){
+        alert ("You've already found this word.  Try Again!")
+    }
+    else if (playersWord === computerWord){
+        alert ("Can't use computers word. Try again!")
+    }
     //how to make sure that player can only match  and add the word once?
-        if((randomWordArray.includes(playersWord)) && (!playersGuess.includes(playersWord))){
+    else if((randomWordArray.includes(playersWord)) && (!playersGuess.includes(playersWord))){
         console.log ("matched word: ", playersWord)
 
         //keep track of points
@@ -88,23 +98,18 @@ function playersWords(){
         let guessElement = document.createElement("p")
         guessElement.innerHTML = playersWord
         document.getElementById("playersGuess").appendChild(guessElement)
-        
-         return 
-    } 
+        //how to make sure  player cant use computer word - its not in the array, but do I want an error message 
+    //if array includes players word and players guess includes players word, alert ("Already guessed!")
+    
     //if players points === possible points --->send to you won page
     //you won page should show 
     if (points === pointsPossible) {
         //direct to '/won' page
-        window.location.href = '/win/'
+        window.location = `/win/${points}/${pointsPossible}`
     }
-    //how to make sure  player cant use computer word - its not in the array, but do I want an error message 
-    //if array includes players word and players guess includes players word, alert ("Already guessed!")
-    if((playersGuess.includes(playersWord))){
-        alert ("You've already found this word.  Try Again!")
-    }
-    if (playersWord === computerWord){
-        alert ("Can't use computers word. Try again!")
-    }
+         return 
+    } 
+    
     else{
         alert ("Not a match! Try again")
        }

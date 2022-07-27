@@ -36,5 +36,6 @@ div {
 }
 
 #img>img{
+    width: 15rem;
     margin-bottom: 25px;
 }

@@ -42,25 +42,23 @@ app.get("/play", (req,res)=> {
     
 // })
 
-app.get("/win", (req, res) => {
+app.get("/win/:points/:pointsPossible", (req, res) => {
     // let userPoints = {}
     // let pointsPossible = {}
+    let userPoints = req.params.points
+    let pointsPossible = req.params.pointsPossible
+    console.log("testing")
+    //render can display the information contained in the 'get' to the webpage/file associated with the name if programmed to do so-
+    res.render('win', {userPoints : userPoints, pointsPossible : pointsPossible})
     //render displays the webpage/file associated with the name -
     // res.render('win', {points : points, pointsPossible : pointsPossible)
-    res.render('win')
     })
 app.get("/lose/:points/:pointsPossible", (req, res) => {
     let userPoints = req.params.points
     let pointsPossible = req.params.pointsPossible
     console.log("testing")
-    //render can display the information contained in the get to the webpage/file associated with the name if programmed to do so-
+    //render can display the information contained in the 'get' to the webpage/file associated with the name if programmed to do so-
     res.render('lose', {userPoints : userPoints, pointsPossible : pointsPossible})
 })
-app.post("/lose", (req, res) => {
-
-    //need to retrieve score info from play somehow - does that need to be a form as well
-    res.render('lose')
-})
-
 
 app.listen(3333)
