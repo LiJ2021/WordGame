@@ -5,19 +5,20 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title BunDle Word Game
-        link(rel="stylesheet", href="style.css") 
+        link(rel="stylesheet", href="/style.css") 
     body 
-        img(src="bunDleBunBurned.png", alt="image of a burned  bun")
+        img(src="/bundleBun.png", alt="image of a burned  bun")
         h1 BunDle Word Game
         br
         h2 You got burned!!!
-    #score-section
-            p Possible Points:
-            #showpointspossible 
-            p Your Score:
-            #showpoints  
-        p Thanks for playing!! 
-    div 
-        a(href="/")
-         button Try Again?
-    script(src="myGameScript.js")
+        #img 
+            img(src="/burned2.png", alt="image of a burned  bun")
+        #score-section
+                p Possible Points:
+                p=pointsPossible
+                p Your Score:
+                p=userPoints  
+        h3 Thanks for playing!! 
+        div 
+            a(href="/")
+                button Try Again?

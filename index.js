@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/play", (req,res)=> {
-    res.render('play',)
+    res.render('play')
 })
 
 //I want the correct word that the user submitted to display on the play page
@@ -46,15 +46,17 @@ app.get("/win", (req, res) => {
     // let userPoints = {}
     // let pointsPossible = {}
     //render displays the webpage/file associated with the name -
+    // res.render('win', {points : points, pointsPossible : pointsPossible)
     res.render('win')
     })
-app.get("/lose", (req, res) => {
-    // let userPoints = {}
-    // let pointsPossible = {}
+app.get("/lose/:points/:pointsPossible", (req, res) => {
+    let userPoints = req.params.points
+    let pointsPossible = req.params.pointsPossible
+    console.log("testing")
     //render can display the information contained in the get to the webpage/file associated with the name if programmed to do so-
-    res.render('lose')
+    res.render('lose', {userPoints : userPoints, pointsPossible : pointsPossible})
 })
-app.post("/losingstats", (req, res) => {
+app.post("/lose", (req, res) => {
 
     //need to retrieve score info from play somehow - does that need to be a form as well
     res.render('lose')

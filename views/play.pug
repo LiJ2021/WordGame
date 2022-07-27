@@ -26,12 +26,12 @@ html(lang="en")
             br
             #buttons 
                 button(type="submit" onclick = "playersWords()") Submit Guess
-        div
+        #wordsFound 
             h4 Words Found: 
             #playersGuess 
             //- how do I append multiple userwords here so that they all show and stay until the user quits or resets? 
             //- probably have to create another array and push the correct answers into it
+            //- contain players words in an an invisible container
         div
-            a(href= "/lose")
-                button Quit?
+                button(onclick = "quitGame()") Quit?
         script(src="myGameScript.js")

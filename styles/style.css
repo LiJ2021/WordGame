@@ -2,7 +2,7 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 20%;
+    width: 5rem;
 }
 
 h1, h2, h3, h4 {
@@ -15,6 +15,26 @@ div {
 #score-section {
     width: 200px;
     border: 7px solid black;
-    border-radius: 7px;;
+    border-radius: 7px;
     margin: auto;
+    padding-bottom: 15px;
+}
+
+#playersGuess {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    border-radius: 7px;
+    padding: 5px;
+    width: 500px;
+    height: 300px;
+    margin-bottom: 15px;
+    border: 7px solid black;
+}
+#playersGuess>p{
+    padding-right: 10px; 
+}
+
+#img>img{
+    margin-bottom: 25px;
 }

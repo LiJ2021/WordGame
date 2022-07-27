@@ -94,12 +94,13 @@ function playersWords(){
     //if players points === possible points --->send to you won page
     //you won page should show 
     if (points === pointsPossible) {
-        
+        //direct to '/won' page
+        window.location.href = '/win/'
     }
     //how to make sure  player cant use computer word - its not in the array, but do I want an error message 
     //if array includes players word and players guess includes players word, alert ("Already guessed!")
     if((playersGuess.includes(playersWord))){
-        alert ("You already found this word.  Try Again!")
+        alert ("You've already found this word.  Try Again!")
     }
     if (playersWord === computerWord){
         alert ("Can't use computers word. Try again!")
@@ -109,12 +110,14 @@ function playersWords(){
        }
    
  } 
-
+function quitGame() {
+    window.location = `/lose/${points}/${pointsPossible}`
+}
 
 //_______________________________________________________________
 
 //possible points are determined by array length
-//points board should read `${points}` out of `${pointsPossible}` "possible"
+//points board should read something like`${points}` out of `${pointsPossible}` "possible"
 
 //capture users guesses - probably need to push to an array
 //let playersGuess = []
